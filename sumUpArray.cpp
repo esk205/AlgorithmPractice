@@ -1,3 +1,7 @@
+// Code Owner: Michael Wynnychuk
+// Coding Competition Website: Hackerrank
+// Objective of Problem: Sum up the contents of the array and return the sum.
+
 #include <bits/stdc++.h>
 
 using namespace std;
