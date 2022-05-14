@@ -1,0 +1,83 @@
+// you can use includes, for example:
+// #include <algorithm>
+#include <vector>
+#include <queue>
+#include <functional>
+#include <iostream>
+
+// you can write to stdout for debugging purposes, e.g.
+// cout << "this is a debug message" << endl;
+
+int solution(int N, int K) {
+    // write your code in C++14 (g++ 6.2.0)
+    
+    // Increase the digit
+    int firstDigit = firstDigit + K;
+    int secondDigit = secondDigit + K;
+    int thirdDigit = thirdDigit + K;
+
+    firstDigit = N/100; // 512/100 = 5
+    int firstDigitHundred = N-(firstDigit*100);
+    int secondDigitTen;
+
+    // Separate the digits
+
+   firstDigit = N/100; // 512/100 = 5
+   thirdDigit = (N% (N/10)); // 2
+   secondDigit = firstDigitHundred/10;
+
+    cout << "Before being added to queue\n";
+    cout << firstDigit << endl;
+    cout << secondDigit << endl;
+    cout << thirdDigit << endl;
+    
+    // Sort the digits from highest to lowest
+    priority_queue<int> q;
+    const auto data = {firstDigit, secondDigit, thirdDigit};
+
+    for(int n : data){
+        q.push(n);
+    }
+
+    int maxDigit1=0;
+    int maxDigit2=0;
+    int maxDigit3=0;
+    cout << "Size of queue " << q.size() << endl;
+    for(unsigned int n = 0; n < q.size(); n++){
+        if(n==0){
+            cout << "Max Digit1 assigned\n";
+            maxDigit1 = q.top();
+            cout << "Popping " << q.top() << " off the queue\n";
+        }
+        else if(n==1){
+            cout << "Max Digit2 assigned\n";
+            maxDigit2 = q.top();
+            cout << "Popping " << q.top() << " off the queue\n";
+        }
+        else if(n==2){
+            cout << "Max Digit3 assigned\n";
+            maxDigit3 = q.top();
+            cout << "Popping " << q.top() << " off the queue\n";
+        }
+        if(q.size() != 0){
+            q.pop();
+        }
+    }
+    //cout << maxDigit1 << maxDigit2 << maxDigit3;
+
+  
+
+
+    cout << "Values of maxDigit\n";
+    cout << maxDigit1 << endl;
+    cout << maxDigit2 << endl;
+    cout << maxDigit3 << endl;
+    cout << "*****************\n";
+
+    maxDigit1 = maxDigit1*100;
+    maxDigit2 = maxDigit2*10;
+    int result  = maxDigit1 + maxDigit2 + maxDigit3;
+
+    cout << "Value of Result " << result << endl;
+    return result;
+}
